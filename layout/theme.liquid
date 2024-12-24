@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="stylesheet" href="{{ 'main.css' | asset_url }}">
 
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
@@ -313,6 +314,8 @@
       {{ content_for_layout }}
     </main>
 
+    {% section 'cart-sidebar' %}
+
     {% sections 'footer-group' %}
 
     <ul hidden>
@@ -372,5 +375,7 @@
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+
+    <script src="{{ 'bundle.js' | asset_url }}"></script>
   </body>
 </html>

@@ -18,3 +18,59 @@
 .sidebar:not(.hidden) {
   transform: translateX(0);
 }
+hr{
+  margin: 20px 0 !important;
+}
+.sidebar{
+  padding: 15px;
+  p{
+    margin: 0;
+  }
+  &_title{
+    text-align: center;
+  }
+  &-content{
+    & ul{
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-flow: column;
+      gap: 16px;
+      & li{
+        background-color: #fff0fa91;
+        border-radius: 20px;
+        padding: 10px;
+        justify-content: space-between;
+        border: 1px solid #ffe3f6;
+        list-style: none;
+        display: flex;
+        align-items: flex-start;
+        gap: 24px;
+        .product_info{
+          &-title{
+
+          }
+          &-quantity{
+
+          }
+          &-line_price{
+
+          }
+        }
+      }
+    }
+  }
+  .button_pay{
+    padding: 8px 16px;
+    border: 1px solid #c1c1c1;
+    text-decoration: none;
+    color: rgb(18 18 18 / 75%);
+    text-align: center;
+    display: block;
+    width: 100%;
+  }
+  .total_text{
+    padding-top: 20px;
+    font-weight: 700;
+  }
+}

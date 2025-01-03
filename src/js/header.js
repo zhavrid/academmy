@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const cartIcon = document.getElementById('cart-icon');
     const sidebarCart = document.getElementById('cart-sidebar');
     const closeCart = document.getElementById('close-cart');
+    const cartCount = document.getElementById('cart-count');
 
     if (cartIcon) {
         cartIcon.addEventListener('click', function () {
@@ -15,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (closeCart) {
         closeCart.addEventListener('click', function () {
-            console.log('Клик на крестик');
             sidebarCart.classList.add('hidden');
         });
     } else {
@@ -37,8 +37,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 const doc = parser.parseFromString(html, 'text/html');
                 const newCartContent = doc.querySelector('#cart-sidebar').innerHTML;
                 sidebarCart.innerHTML = newCartContent; // Обновляем содержимое корзины
+                updateCartCount(); // Обновляем количество товаров в корзине
                 attachEventListeners(); // Повторно привязываем обработчики событий
             });
+    }
+
+    // Функция для обновления количества товаров в корзине
+    function updateCartCount() {
+        fetch('/cart.js') // Получаем данные корзины
+            .then(response => response.json())
+            .then(cart => {
+                if (cartCount) {
+                    cartCount.textContent = cart.item_count; // Обновляем количество товаров
+                }
+            })
+            .catch(error => console.error('Ошибка обновления количества товаров:', error));
     }
 
     // Привязка обработчиков событий для удаления товаров из корзины

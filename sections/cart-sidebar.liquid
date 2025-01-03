@@ -1,23 +1,26 @@
 <section id="cart-sidebar" class="sidebar hidden">
     <button id="close-cart">✕</button>
-    <div id="cart-content">
+    <p class="sidebar_title">My Card</p>
+    <div id="cart-content" class="sidebar-content">
         {% if cart.items %}
             <ul>
                 {% for item in cart.items %}
                     <li>
-                        <img src="{{ item.image | img_url: '100x100' }}" alt="{{ item.title }}">
-                        <p>{{ item.title }}</p>
-                        <p>{{ item.quantity }}</p>
-                        <p>{{ item.line_price | money }}</p>
-                        <!-- Кнопка удаления -->
-                        <button class="remove-item" data-key="{{ item.key }}">Удалить</button>
+                        <div class="product_info">
+                            <img src="{{ item.image | img_url: '100x100' }}" alt="{{ item.title }}">
+                            <p class="product_info-title">Name: {{ item.title }}</p>
+                            <p class="product_info-quantity">Qty: {{ item.quantity }}</p>
+                            <p class="product_info-line_price">One Price: {{ item.line_price | money }}</p>
+                        </div>
+                        <button class="remove-item" data-key="{{ item.key }}">✕</button>
                     </li>
                 {% endfor %}
             </ul>
-            <p>Итого: {{ cart.total_price | money }}</p>
-            <a href="/checkout">Перейти к оплате</a>
+            <p class="total_text">Total: {{ cart.total_price | money }}</p>
+            <hr>
+            <a class="button_pay" href="/checkout">Go to pay</a>
         {% else %}
-            <p>Ваша корзина пуста</p>
+            <p>Card empty</p>
         {% endif %}
     </div>
 

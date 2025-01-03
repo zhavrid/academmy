@@ -1,0 +1,8 @@
+<div>
+    <h3>Товары в корзине</h3>
+    <ul>
+        {% for item in cart.items %}
+            <li>{{ item.product.title }} — {{ item.quantity }}</li>
+        {% endfor %}
+    </ul>
+</div>
